@@ -12,44 +12,45 @@
 </head>
 
 <body>
-    <aside>
+    <aside class="close">
         <div class="logo">
             <h2>DevHub</h2>
         </div>
         <ul class="menu ">
             <li class="active">
-                <span>🏠</span>
-                dashboard
+                <span class="menu-icon">🏠</span>
+                <span class="menu-text">dashboard</span>
             </li>
 
-            <li> <span>✅️</span>
-                Task</li>
+            <li> <span class="menu-icon">✅️</span>
+                 <span class="menu-text">Task</span></li>
 
-            <li> <span>📝</span>
-                Notes</li>
+            <li> <span class="menu-icon">📝</span>
+                <span class="menu-text">Notes</span></li>
 
-            <li> <span>⏱️</span>
-                Pomodoro</li>
+            <li> <span class="menu-icon">⏱️</span>
+                <span class="menu-text">Pomodoro</span></li>
 
-            <li> <span>📆</span>
-                Calendar</li>
+            <li> <span class="menu-icon">📆</span>
+                <span class="menu-text">Calender</span></li>
 
-            <li> <span>📊</span>
-                Analytics</li>
+            <li> <span class="menu-icon">📊</span>
+                <span class="menu-text">Analytics</span></li>
 
-            <li> <span>⛉</span>
-                Bookmarks</li>
+            <li> <span class="menu-icon">⛉</span>
+                <span class="menu-text">Bookmarks</span></li>
 
-            <li> <span>📚</span>
-                Resources</li>
+            <li> <span class="menu-icon">📚</span>
+                <span class="menu-text">Resources</span></li>
 
-            <li> <span>⚙️</span>
-                Settings</li>
+            <li> <span class="menu-icon">⚙️</span>
+                <span class="menu-text">Settings</span></li>
 
         </ul>
 
         <div class="profile">
-            👤 Aditya</div>
+            <span class="menu-icon">👤</span> 
+            <span class="menu-text">Aditya<span></div>
     </aside>
 
     <main>
@@ -240,7 +241,7 @@
                 </div>
 
                 <!-- right -->
-                 <div class="chart-section">
+                <div class="chart-section">
                     <div class="chart-header">
                         <h2>Productivity Overview</h2>
                         <span>This Week</span>
@@ -251,7 +252,73 @@
                         <p>Weekly Progress Chart</p>
                     </div>
 
-                 </div>
+                </div>
+
+            </div>
+
+            <div class="bottom-grid">
+
+                <!-- Pomodoro -->
+                <div class="pomodoro-section">
+
+                    <div class="pomodoro-header">
+                        <h2>Pomodoro Timer</h2>
+                        <i class="ri-timer-line"></i>
+                    </div>
+
+                    <div class="timer">
+                        25:00
+                    </div>
+
+                    <div class="timer-btns">
+                        <button class="start-btn">Start</button>
+                        <button class="reset-btn">Reset</button>
+                    </div>
+
+                </div>
+
+                <!-- GitHub -->
+                <div class="github-section">
+
+                    <div class="github-header">
+                        <h2>GitHub Activity</h2>
+                        <span>This Week</span>
+                    </div>
+
+                    <div class="heatmap">
+
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div class="active"></div>
+                        <div></div>
+                        <div></div>
+                        <div class="active"></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div class="active"></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        <div class="active"></div>
+                        <div class="active"></div>
+                        <div></div>
+                        <div></div>
+                        <div class="active"></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -264,7 +331,7 @@
 
 
 
-
+    <script src="./JS/app.js"></script>
 </body>
 
 </html>
