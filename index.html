@@ -12,10 +12,13 @@
 </head>
 
 <body>
+
+    <!-- Side Menu -->
     <aside class="close">
         <div class="logo">
             <h2>DevHub</h2>
         </div>
+
         <ul class="menu ">
             <li class="active">
                 <span class="menu-icon">🏠</span>
@@ -23,38 +26,50 @@
             </li>
 
             <li> <span class="menu-icon">✅️</span>
-                 <span class="menu-text">Task</span></li>
+                <span class="menu-text">Task</span>
+            </li>
 
             <li> <span class="menu-icon">📝</span>
-                <span class="menu-text">Notes</span></li>
+                <span class="menu-text">Notes</span>
+            </li>
 
             <li> <span class="menu-icon">⏱️</span>
-                <span class="menu-text">Pomodoro</span></li>
+                <span class="menu-text">Pomodoro</span>
+            </li>
 
             <li> <span class="menu-icon">📆</span>
-                <span class="menu-text">Calender</span></li>
+                <span class="menu-text">Calender</span>
+            </li>
 
             <li> <span class="menu-icon">📊</span>
-                <span class="menu-text">Analytics</span></li>
+                <span class="menu-text">Analytics</span>
+            </li>
 
             <li> <span class="menu-icon">⛉</span>
-                <span class="menu-text">Bookmarks</span></li>
+                <span class="menu-text">Bookmarks</span>
+            </li>
 
             <li> <span class="menu-icon">📚</span>
-                <span class="menu-text">Resources</span></li>
+                <span class="menu-text">Resources</span>
+            </li>
 
             <li> <span class="menu-icon">⚙️</span>
-                <span class="menu-text">Settings</span></li>
+                <span class="menu-text">Settings</span>
+            </li>
 
         </ul>
 
         <div class="profile">
-            <span class="menu-icon">👤</span> 
-            <span class="menu-text">Aditya<span></div>
+            <span class="menu-icon">👤</span>
+            <span class="menu-text">Aditya<span>
+        </div>
     </aside>
 
+
+    <!-- main page -->
     <main>
 
+        <!-- nav-bar section -->
         <nav>
             <div class="Nav-left">
                 <button class="menu-btn">
@@ -92,16 +107,22 @@
             </div>
         </nav>
 
+
+
+        <!-- Dashboard Section -->
         <section class="dashboard">
+
+            <!--Greeting Section-->
             <div class="hero">
                 <h1>Good Evening Aditya </h1>
                 <p>keep pushing, you'r doing great</p>
             </div>
 
 
-            <!-- card no 1 -->
-            <div class="cards">
 
+            <!--Progress Card Section -->
+            <div class="cards">
+                <!-- Card No - 1 -->
                 <div class="card">
                     <div class="card-top">
                         <div class="icon">
@@ -124,13 +145,13 @@
                         </div>
                         <div class="card-contant">
                             <h4>completed</h4>
-                            <h2>18</h2>
+                            <h2 class="completed-count">0</h2>
                         </div>
                     </div>
                     <p>8% from yestarday</p>
                 </div>
-                <!-- Card no 3 -->
 
+                <!-- Card no 3 -->
                 <div class="card">
                     <div class="card-top">
                         <div class="icon">
@@ -143,8 +164,8 @@
                     </div>
                     <p>15% from yestarday</p>
                 </div>
-                <!-- Card no 4 -->
 
+                <!-- Card no 4 -->
                 <div class="card">
                     <div class="card-top">
                         <div class="icon">
@@ -160,88 +181,27 @@
 
             </div>
 
+
+            <!-- Middle grid -->
             <div class="dashboard-grid">
-                <!-- left -->
-                <!-- task section  -->
+
+                <!-- left Side Grid & Task Section -->
                 <div class="task-section">
 
                     <div class="task-header">
                         <h2>Today's Task</h2>
-                        <button class="add btn">Add Task</button>
+                        <button class="add-btn">Add Task</button>
                     </div>
 
-                    <div class="task-item">
-                        <div class="task-left">
-                            <input type="checkbox">
-
-                            <div>
-                                <h4>learn react basic</h4>
-                                <p>High Priority</p>
-                            </div>
-                        </div>
-
-                        <div class="task-right">
-                            <span>10:20 AM</span>
-                            <i class="ri-more-2-fill"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="task-item">
-                        <div class="task-left">
-                            <input type="checkbox">
-
-                            <div>
-                                <h4>learn react basic</h4>
-                                <p>High Priority</p>
-                            </div>
-                        </div>
-
-                        <div class="task-right">
-                            <span>10:20 AM</span>
-                            <i class="ri-more-2-fill"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="task-item">
-                        <div class="task-left">
-                            <input type="checkbox">
-
-                            <div>
-                                <h4>learn react basic</h4>
-                                <p>High Priority</p>
-                            </div>
-                        </div>
-
-                        <div class="task-right">
-                            <span>10:20 AM</span>
-                            <i class="ri-more-2-fill"></i>
-                        </div>
-
-                    </div>
-
-                    <div class="task-item">
-                        <div class="task-left">
-                            <input type="checkbox">
-
-                            <div>
-                                <h4>learn react basic</h4>
-                                <p>High Priority</p>
-                            </div>
-                        </div>
-
-                        <div class="task-right">
-                            <span>10:20 AM</span>
-                            <i class="ri-more-2-fill"></i>
-                        </div>
-
+                    <div>
+                        
                     </div>
 
                 </div>
 
-                <!-- right -->
+                <!-- Right Side Grid & Chart Section-->
                 <div class="chart-section">
+
                     <div class="chart-header">
                         <h2>Productivity Overview</h2>
                         <span>This Week</span>
@@ -256,9 +216,10 @@
 
             </div>
 
+            <!-- Bottom Grid -->
             <div class="bottom-grid">
 
-                <!-- Pomodoro -->
+                <!-- Pomodoro Section -->
                 <div class="pomodoro-section">
 
                     <div class="pomodoro-header">

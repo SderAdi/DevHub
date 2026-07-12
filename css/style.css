@@ -15,17 +15,16 @@ body {
   
 }
  
- /* sidebar */
+ /* Side - Menu CSS */
 
 aside{
     width: 250px;
-    /* min-width: 230px;
-    max-width: 270px; */
     height: 100vh;
     background-color: #161b22;
     border-right: 1px solid #2a2a2a;
     transition: 0.3s ease;
 }
+
 aside.close{
     width: 80px;
 }
@@ -88,9 +87,13 @@ aside.close .logo h2{
 
 .active{
     background:#5345ef;
-    color:white;
+    color:white; 
 
 }
+
+
+
+/* Main Dashboard css Apply */
 main{
     flex: 1;
     display: flex;
@@ -104,8 +107,8 @@ main{
     border-top:1px solid #2a2a2a;
 }
 
-/* Navbar */
 
+/* Nav bar*/
 nav{
     height: 70px;
     background: #161b22;
@@ -118,20 +121,16 @@ nav{
     border-bottom: 1px solid  #2a2a2a;
 }
 
-/* left */
+/* left side of nav-bar */
 .menu-btn{
     background: none;
     border: none;
-
     color: white;
-
     font-size: 24px;
-
     cursor: pointer;
-
 }
 
-/* search box */
+/* search box of nav-bar */
 .search-box{
     width: 400px;
     height: 45px;
@@ -161,12 +160,12 @@ nav{
     font-size: 15px;
 }
 
-/* nav-right */
 
+/* right side of nav-bar */
 .Nav-right{
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 19px;
 }
 
 .icon-btn {
@@ -186,7 +185,7 @@ nav{
     transform: scale(1.1);
 }
 
-/* user */
+/* nav-bar profile area */
 .user{
     display: flex;
     align-items: center;
@@ -239,6 +238,8 @@ section{
     font-size: 32px;
 }
 
+
+/* Dashboard upper cards */
 .cards{
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -320,12 +321,14 @@ section{
     background: #f97316;
 }
 
+/* to-do section of dashboard */
 .task-section{
     height: 330px;
     width: 400px;
     background-color: #161b22;
     margin-top: 20px;
     border-radius: 24px;
+    overflow-y: auto;
 }
 
 .task-header{
@@ -333,6 +336,11 @@ section{
         justify-content: space-between;
         align-items: center;
         padding: 19px;
+        height: 50px;
+        background-color: #5345ef;
+        position: sticky;
+        top: 0;
+        z-index: 10;
 }
 
 .task-left{
@@ -361,7 +369,17 @@ section{
 }
 
 .task-right i{
-    font-size: 20px;
+    font-size: 21px;
+}
+
+/* for js feature */
+.completed h4{
+    text-decoration: line-through;
+
+}
+
+.completed{
+    opacity: 0.6;
 }
 
 .dashboard-grid{
@@ -377,6 +395,7 @@ section{
     border-radius:24px;
     padding:20px;
     height:250px;
+    margin-top: 22px;
 }
 
 .chart-header{

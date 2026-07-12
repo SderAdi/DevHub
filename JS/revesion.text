@@ -1,0 +1,113 @@
+MenuItems.forEach((item) => {
+    item.addEventListener("click", () => {
+        MenuItems.forEach((menu) => {
+            menu.classList.remove("active");
+        })
+
+        item.classList.add("active");
+    });
+});
+
+menuBtn.addEventListener("click", () => {
+    sidebar.classList.toggle("close")
+
+});
+
+
+// localStorage features
+function createTask(taskData) {
+    const task = document.createElement("div");
+
+    task.className = "task-item";
+    task.innerHTML = `
+                        <div class="task-left">
+                            <input type="checkbox">
+
+                            <div>
+                                <h4>${taskData.taskName}</h4>
+                                <p>${taskData.Priority}</p>
+                            </div>
+                        </div>
+
+                        <div class="task-right">
+                            <span>${taskData.currentTime}</span>
+                           <button class="delete-button">Delete</button>
+
+                        </div>
+                    `
+
+    // checkbox feature
+
+    const checkbox = task.querySelector("input");
+    const completedCount = document.querySelector(".completed-count");
+    const deleteBtn = task.querySelector(".delete-button");
+
+    checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+            task.classList.add("completed");
+
+            taskData.completed = true;
+            completed++;
+            completedCount.textContent = completed;
+        }
+
+        else {
+            task.classList.remove("completed");
+            completed--;
+            taskData.completed = false;
+            completedCount.textContent = completed;
+        }
+        localStorage.setItem("tasks".JSON.stringify(tasks));
+    })
+
+
+    deleteBtn.addEventListener("click", () => {
+        if (checkbox.checked) {
+            completed--;
+            completedCount.textContent = completed;
+        }
+        task.remove();
+    })
+
+    if (taskData.completed) {
+        checkbox.checked = true;
+        task.classList.add("completed");
+
+    }
+
+
+    // tasksection.appendChild(task);
+    // means ki( parent.insertBefore(newElement, existingElement); )
+    tasksection.insertBefore(task, tasksection.children[1]);
+
+}
+
+tasks.forEach((taskData) => {
+    createTask(taskData);
+});
+
+addBtn.addEventListener("click", () => {
+    const taskName = prompt("Entre Task Name");
+    const Priority = prompt("Entre Priority");
+
+    if (taskName === "" || taskName === null) {
+        alert("Please Enter Task First ");
+        return;
+    }
+
+    const now = new Date();
+    const hour = now.getHours();
+    const minute = now.getMinutes();
+    const currentTime = `${hour} : ${minute}`
+
+    const taskData = {
+        taskName,
+        Priority,
+        currentTime,
+        completed: false
+    }
+
+    tasks.push(taskData);
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+
+});
