@@ -5,12 +5,13 @@ const menuBtn = document.querySelector(".menu-btn");
 const sidebar = document.querySelector("aside");
 const addBtn = document.querySelector(".add-btn");
 const tasksection = document.querySelector(".task-section");
-const deleteBtn = task.querySelector(".delete-button");
-// let completed = 0;
+// const deleteBtn = task.querySelector(".delete-button");
+let completed = 0;
 // let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
 // Menu Bar Features
+
 MenuItems.forEach((item) => {
     item.addEventListener("click", () => {
         MenuItems.forEach((menu) => {
