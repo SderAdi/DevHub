@@ -5,7 +5,7 @@ const menuBtn = document.querySelector(".menu-btn");
 const sidebar = document.querySelector("aside");
 const addBtn = document.querySelector(".add-btn");
 const tasksection = document.querySelector(".task-section");
-// const deleteBtn = task.querySelector(".delete-button");
+const deleteBtn = task.querySelector(".delete-button");
 // let completed = 0;
 // let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
