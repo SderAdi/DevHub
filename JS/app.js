@@ -5,13 +5,13 @@ const menuBtn = document.querySelector(".menu-btn");
 const sidebar = document.querySelector("aside");
 const addBtn = document.querySelector(".add-btn");
 const tasksection = document.querySelector(".task-section");
-// const deleteBtn = task.querySelector(".delete-button");
+
 let completed = 0;
-// let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
 
 
 // Menu Bar Features
-
 MenuItems.forEach((item) => {
     item.addEventListener("click", () => {
         MenuItems.forEach((menu) => {
@@ -26,46 +26,112 @@ menuBtn.addEventListener("click", () => {
 });
 
 
-// task Section
 
 
+function CreateTaskSection() {
 
-addBtn.addEventListener("click", () => {
-    const taskName = prompt("Entre task Name");
-    // const priority = prompt("priority");
+    tasks.forEach((taskData, index) => {
+    createTask(taskData, index);
+})
 
-
-
-    const now = new Date();
-    const hour = now.getHours();
-    const minute = now.getMinutes();
-    const currentTime = `${hour} : ${minute}`
-
-
-    const task = document.createElement("div");
-    task.className = "task-item"
-    task.innerHTML = ` <div class="task-left">
+    function createTask(taskData, index) {
+        //task item
+        const task = document.createElement("div");
+        task.className = "task-item"
+        task.innerHTML = ` <div class="task-left">
                             <input type="checkbox">
 
                             <div>
-                                <h4>${taskName}</h4>
+                                <h4>${taskData.taskName}</h4>
                                 
                             </div>
                         </div>
 
                         <div class="task-right">
-                            <span>${currentTime}</span>
+                            <span>${taskData.currentTime}</span>
                            <button class="delete-button">Delete</button>
 
                         </div>
                     `
 
-//    tasksection.appendChild(task);
-tasksection.insertBefore(task, tasksection.children[1])
 
-});
+        // tasksection.insertBefore(task, tasksection.children[1])
+        tasksection.appendChild(task);
+
+        //delete button features
+        const deleteBtn = task.querySelector(".delete-button");
+
+        deleteBtn.addEventListener("click", () => {
+            if (checkbox.checked) {
+                completed--;
+                completedCount.textContent = completed
+            };
+            task.remove()
+            tasks.splice(index);
+            localStorage.setItem("tasks", JSON.stringify(tasks));
+
+        });
+
+
+        //checkbox features
+        const checkbox = task.querySelector("input");
+        const completedCount = document.querySelector(".completed-count");
+        checkbox.addEventListener("change", () => {
+            if (checkbox.checked) {
+                task.classList.add("completed");
+
+                completed++;
+                completedCount.textContent = completed;
+
+            }
+            else {
+                task.classList.remove("completed");
+
+                completed--;
+                completedCount.textContent = completed;
+            }
+
+        });
+    };
+
+    //add button karne pe task section ka behave
+    addBtn.addEventListener("click", () => {
+        const taskName = prompt("Entre task Name");
+        // const priority = prompt("priority");
+
+        if (taskName === "" || taskName === null) {
+            alert("Please Enter Task First");
+            return;
+        }
+
+
+        const now = new Date();
+        const hour = now.getHours();
+        const minute = now.getMinutes();
+        const currentTime = `${hour} : ${minute}`
+
+
+        //task Data
+        const taskData = {
+            taskName,
+            currentTime,
+            completed: false
+        }
+
+        tasks.push(taskData)
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        createTask(taskData, tasks.length - 1);
+
+
+    });
 
 
 
 
 
+
+
+
+}
+
+CreateTaskSection();
