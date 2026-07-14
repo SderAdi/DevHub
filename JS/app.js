@@ -11,6 +11,8 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
 
+
+
 // Menu Bar Features
 MenuItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -27,12 +29,13 @@ menuBtn.addEventListener("click", () => {
 
 
 
-
+//task section and features
 function CreateTaskSection() {
 
     tasks.forEach((taskData, index) => {
-    createTask(taskData, index);
-})
+        createTask(taskData, index);
+
+    })
 
     function createTask(taskData, index) {
         //task item
@@ -111,7 +114,7 @@ function CreateTaskSection() {
         const currentTime = `${hour} : ${minute}`
 
 
-        //task Data
+        //task Data Object
         const taskData = {
             taskName,
             currentTime,
@@ -126,12 +129,25 @@ function CreateTaskSection() {
     });
 
 
-
-
-
-
-
-
 }
-
 CreateTaskSection();
+
+//task section searchbar features
+const searchTask = document.querySelector(".search-task");
+
+searchTask.addEventListener("input" , ()=>{
+    const allTasks = document.querySelectorAll(".task-item");
+        allTasks.forEach((task) => {
+
+            const taskTitle = task.querySelector("h4");
+
+            if (taskTitle.textContent
+                .toLocaleLowerCase() 
+                .includes(searchTask.value.toLowerCase())){
+                task.style.display = "flex";
+            }
+            else{
+                task.style.display = "none";
+            }
+        })
+});

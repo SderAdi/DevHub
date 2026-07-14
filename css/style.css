@@ -372,6 +372,36 @@ section{
     font-size: 21px;
 }
 
+
+
+.task-search {
+    padding: 12px;
+}
+
+.search-task {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #2d3440;
+    border-radius: 8px;
+    background: #1a1f27;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-task::placeholder {
+    color: #8b8b8b;
+}
+
+.search-task:focus , .search-task:hover{
+    border-color: #7c5cff;
+    box-shadow: 0 0 8px rgba(124, 92, 255, 0.3);
+}
+
+
+
+
 /* for js feature */
 .completed h4{
     text-decoration: line-through;
