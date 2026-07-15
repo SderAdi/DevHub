@@ -378,6 +378,8 @@ section{
     padding: 12px;
 }
 
+
+
 .search-task {
     width: 100%;
     padding: 10px 15px;
@@ -392,6 +394,7 @@ section{
 
 .search-task::placeholder {
     color: #8b8b8b;
+      
 }
 
 .search-task:focus , .search-task:hover{

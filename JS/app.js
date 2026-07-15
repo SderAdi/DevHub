@@ -12,7 +12,6 @@ let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 
 
 
-
 // Menu Bar Features
 MenuItems.forEach((item) => {
     item.addEventListener("click", () => {
@@ -36,6 +35,7 @@ function CreateTaskSection() {
         createTask(taskData, index);
 
     })
+    updateTotalTask()
 
     function createTask(taskData, index) {
         //task item
@@ -61,6 +61,7 @@ function CreateTaskSection() {
         // tasksection.insertBefore(task, tasksection.children[1])
         tasksection.appendChild(task);
 
+
         //delete button features
         const deleteBtn = task.querySelector(".delete-button");
 
@@ -70,8 +71,9 @@ function CreateTaskSection() {
                 completedCount.textContent = completed
             };
             task.remove()
-            tasks.splice(index);
+            tasks.splice(index, 1);
             localStorage.setItem("tasks", JSON.stringify(tasks));
+            updateTotalTask();
 
         });
 
@@ -85,6 +87,7 @@ function CreateTaskSection() {
 
                 completed++;
                 completedCount.textContent = completed;
+                taskData.completed = true
 
             }
             else {
@@ -92,10 +95,22 @@ function CreateTaskSection() {
 
                 completed--;
                 completedCount.textContent = completed;
+                taskData.completed = false
             }
+            localStorage.setItem("tasks", JSON.stringify(tasks))
 
         });
+
+        if (taskData.completed) {
+            checkbox.checked = true;
+            task.classList.add("completed");
+
+            completed++;
+            completedCount.textContent = completed;
+        }
     };
+
+
 
     //add button karne pe task section ka behave
     addBtn.addEventListener("click", () => {
@@ -124,8 +139,7 @@ function CreateTaskSection() {
         tasks.push(taskData)
         localStorage.setItem("tasks", JSON.stringify(tasks));
         createTask(taskData, tasks.length - 1);
-
-
+        updateTotalTask();
     });
 
 
@@ -135,19 +149,28 @@ CreateTaskSection();
 //task section searchbar features
 const searchTask = document.querySelector(".search-task");
 
-searchTask.addEventListener("input" , ()=>{
-    const allTasks = document.querySelectorAll(".task-item");
-        allTasks.forEach((task) => {
+searchTask.addEventListener("input", () => {
 
-            const taskTitle = task.querySelector("h4");
+    const allTask = document.querySelectorAll(".task-item");
 
-            if (taskTitle.textContent
-                .toLocaleLowerCase() 
-                .includes(searchTask.value.toLowerCase())){
-                task.style.display = "flex";
-            }
-            else{
-                task.style.display = "none";
-            }
-        })
+    allTask.forEach((task) => {
+
+        const taskTitle = task.querySelector("h4");
+
+
+        if (taskTitle.textContent
+            .toLocaleLowerCase()
+            .includes(searchTask.value.toLowerCase())) {
+            task.style.display = "flex";
+        }
+        else {
+            task.style.display = "none";
+        }
+    })
 });
+
+
+function updateTotalTask() {
+    const totalTaskCount = document.querySelector(".total-task-count");
+    totalTaskCount.textContent = tasks.length;
+}
