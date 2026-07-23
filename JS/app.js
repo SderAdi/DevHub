@@ -148,66 +148,102 @@ function updateTotalTask() {
 
 const searchTask = document.querySelector(".search-task");
 
-searchTask.addEventListener("input" , ()=>{
+searchTask.addEventListener("input", () => {
     const allTask = document.querySelectorAll(".task-item");
 
-    allTask.forEach((task) =>{
-         const taskTitle = task.querySelector("h4");
-         if (taskTitle.textContent.toLocaleLowerCase()
-            .includes(searchTask.value.toLowerCase())){
+    allTask.forEach((task) => {
+        const taskTitle = task.querySelector("h4");
+        if (taskTitle.textContent.toLocaleLowerCase()
+            .includes(searchTask.value.toLowerCase())) {
             task.style.display = "flex";
-         }
-         else {
+        }
+        else {
             task.style.display = "none";
-            
-         }
-        
+
+        }
+
     });
 })
 
-const timer = document.querySelector(".timer");
 const startBtn = document.querySelector(".start-btn");
+const Timer = document.querySelector(".timer");
 const resetBtn = document.querySelector(".reset-btn");
 const pauseBtn = document.querySelector(".pause-btn");
-
-let timeLeft = 25*60;
 let interval;
 
-function updateTimer(){
-    const minute = Math.floor(timeLeft / 60);
-    let second = (timeLeft % 60);
+let timeleft = JSON.parse(localStorage.getItem("timeleft")) || 25 * 60;
+let isRunning = JSON.parse(localStorage.getItem("isRunning")) || false;
 
-    if (second < 10){
-        second = "0" + second;
+updateTimer();
+
+if (isRunning) {
+    startTimer();
+}
+
+
+
+
+function updateTimer() {
+    const minute = Math.floor(timeleft / 60);
+    let seconds = (timeleft % 60);
+
+    if (seconds < 10) {
+        seconds = "0" + seconds;
     }
+    Timer.textContent = `${minute}:${seconds}`;
+}
 
-    timer.textContent = `${minute} : ${second}`;
-};
-
-startBtn.addEventListener("click" , ()=>{
-        clearInterval(interval);
-        interval = setInterval(() =>{
-            timeLeft--;
-            updateTimer();
-
-            if (timeLeft <= 0){
-                clearInterval(interval)
-                alert("Promodoro Complete");
-                timeLeft = 25*60;
-                updateTimer();
-            }
-            
-        }, 1000);
-
-});
-
-resetBtn.addEventListener("click" , ()=>{
-        clearInterval(interval);
-        timeLeft = 25*60;
+function startTimer() {
+    interval = setInterval(() => {
+        timeleft--;
+        localStorage.setItem("timeleft", JSON.stringify(timeleft));
         updateTimer();
-       
-});
+        isRunning = true;
+        localStorage.setItem("isRunning", JSON.stringify(isRunning));
 
-pauseBtn.addEventListener("click", ()=>{
+        if (timeleft <= 0) {
+            clearInterval(interval)
+            alert("Promodoro Completed")
+
+            focusMinute += 25;
+            localStorage.setItem("focusMinute", JSON.stringify(focusMinute));
+            updateFocusHrs();
+            timeleft = (25 * 60);
+            updateTimer();
+            isRunning = false;
+            localStorage.setItem("isRunning", JSON.stringify(isRunning));
+        }
+
+    }, 1000);
+}
+
+startBtn.addEventListener("click", () => {
+    clearInterval(interval)
+    startTimer();
+
+})
+
+pauseBtn.addEventListener("click", () => {
     clearInterval(interval);
-});
+    isRunning = false;
+    localStorage.setItem("isRunning", JSON.stringify(isRunning));
+})
+
+resetBtn.addEventListener("click", () => {
+    clearInterval(interval);
+    timeleft = (25 * 60);
+    updateTimer();
+    isRunning = false;
+    localStorage.setItem("isRunning", JSON.stringify(isRunning));
+})
+
+
+const focusHrs = document.querySelector(".focus-hours-count");
+let focusMinute = JSON.parse(localStorage.getItem("focusMinute")) || 0;
+updateFocusHrs();
+
+function updateFocusHrs() {
+    let hours = focusMinute / 60;
+    focusHrs.textContent = `${hours.toFixed(1)}`;
+}
+
